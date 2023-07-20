@@ -18,13 +18,13 @@ export class ProductosService {
 
   private cargarProductos(){
 
-    return new Promise( (resolve, reject) =>{
+    return new Promise<void>( (resolve, reject) =>{
 
       this.http.get<Producto[]>('https://angular-html-b4bcf-default-rtdb.firebaseio.com/productos_idx.json')
       .subscribe( (response:Producto[]) => {
         this.productos = response;
         this.cargando = false;
-        resolve;
+        resolve();
       });
 
     } )
